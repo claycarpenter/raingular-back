@@ -6,6 +6,7 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'spec_helper'
 require 'rspec/rails'
 require 'capybara'
+require 'capybara/poltergeist'
 
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -55,7 +56,8 @@ RSpec.configure do |config|
   # Enable Capybara DSL
   config.include Capybara::DSL
   config.include Capybara::RSpecMatchers
-
-  Capybara.app_host = 'http://localhost:9000'
-  Capybara.run_server = false
 end
+
+Capybara.app_host = 'http://localhost:9000'
+Capybara.run_server = false
+Capybara.javascript_driver = :poltergeist
